@@ -12,7 +12,7 @@ import OTPAuthentication from '@/components/elements/OtpAuthentication';
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [ phoneNumber, setPhoneNumber]=useState("+916238002737");
+  const [ phoneNumber, setPhoneNumber]=useState("+919497505820");
   const [userName, setUserName] = useState("")
   const handleNext = () => {
     if (currentStep === 3) {
