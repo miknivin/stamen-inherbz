@@ -9,12 +9,11 @@ import CheckOut from './CheckOut';
 import OTPAuthentication from '@/components/elements/OtpAuthentication';
 
 
-
-
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [ phoneNumber, setPhoneNumber]=useState("+916238002737");
+  const [userName, setUserName] = useState("")
   const handleNext = () => {
     if (currentStep === 3) {
       setIsModalOpen(true);
@@ -27,11 +26,6 @@ export default function Home() {
     setCurrentStep((prevStep) => prevStep - 1);
   };
 
-//   useEffect(() => {
-//     if (typeof window !== 'undefined') {
-//         Modal.setAppElement('#__next');
-//     }
-// }, []);
 
   const renderStepContent = () => {
     switch (currentStep) {
@@ -39,14 +33,14 @@ export default function Home() {
         return (
           <div>
             <h2 className='text-white'>Contact Information</h2>
-            <ContactForm />
+            <ContactForm handleNext={handleNext} />
           </div>
         );
       case 2:
         return (
           <div>
             <h2 className='text-white'>Shipping Information</h2>
-            <Shipping />
+            <Shipping handleNextShipping={handleNext} />
           </div>
         );
       case 3:
@@ -56,7 +50,7 @@ export default function Home() {
             <div>
                 <CheckOut />
                 <div className='w-100 d-flex justify-content-start' style={{ marginBottom: '15px' }}>
-                    <button className='theme-btn btn-one'>
+                    <button onClick={handleNext} className='theme-btn btn-one'>
                      <span>Pay On Delivery</span> 
                     </button>
                 </div>
@@ -67,7 +61,6 @@ export default function Home() {
         return null;
     }
   };
-
 
   return (
     <>
@@ -114,7 +107,9 @@ export default function Home() {
           ariaHideApp={false}
           style={{
             overlay: {
-              backgroundColor: 'rgba(0, 0, 0, 0.75)'
+              backgroundColor: 'rgba(0, 0, 0, 0.75)',
+              zIndex:9999999,
+              
             },
             content: {
               top: '50%',
@@ -126,11 +121,12 @@ export default function Home() {
               padding: '20px',
               borderRadius: '10px',
               maxWidth: '500px',
+              overflow:'hidden',
               width: '100%',
             }
           }}
         >
-          <OTPAuthentication />
+          <OTPAuthentication name={userName} phone={phoneNumber} />
         </Modal>
       </Layout>
     </>

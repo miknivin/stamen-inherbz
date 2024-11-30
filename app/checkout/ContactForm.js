@@ -1,17 +1,32 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { isValidForm } from '../../helpers/contactFormValidation'; 
 
-export default function ContactForm() {
+export default function ContactForm({ handleNext }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
     // Handle form submission
-    const handleSubmit = () => {
-        const shippingInfo = { name, email, phone };
-        localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
-        alert('Shipping info saved!');
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        const existingShippingInfo = localStorage.getItem('shippingInfo');
+        
+        if (existingShippingInfo) {
+            handleNext();
+        } else {
+            if (isValidForm(name, email, phone)) {
+                const shippingInfo = { name, email, phone };
+                localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
+                alert('Shipping info saved!');
+                handleNext();
+            } else {
+                alert('Please fill in all fields correctly.');
+            }
+        }
     };
+    
 
     // Populate form fields from localStorage
     useEffect(() => {
@@ -25,7 +40,7 @@ export default function ContactForm() {
     }, []);
 
     return (
-        <form className="text-white" onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
+        <form className="text-white" onSubmit={handleSubmit}>
             {/* Name input */}
             <div data-mdb-input-init className="form-outline mb-4">
                 <label className="form-label mb-0" htmlFor="form4Example1">
@@ -70,7 +85,7 @@ export default function ContactForm() {
                 type="submit"
                 className="theme-btn btn-one"
             >
-                <span>Submit</span> 
+                <span>Submit</span>
             </button>
         </form>
     );

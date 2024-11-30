@@ -1,8 +1,9 @@
 'use client';
 
 import { useEffect, useState } from "react";
+import { isValidShippingForm } from '../../helpers/contactFormValidation'; // Adjust the path according to your directory structure
 
-export default function Shipping() {
+export default function Shipping({ handleNextShipping }) {
     const [states, setStates] = useState([]);
     const [selectedState, setSelectedState] = useState("19");
     const [cities, setCities] = useState([]);
@@ -43,8 +44,6 @@ export default function Shipping() {
             setSelectedCity(existingShippingInfo.selectedCity?.id || "");
             setPostalCode(existingShippingInfo.postalCode || "");
         }
-        console.log(existingShippingInfo);
-        
     }, []);
 
     // Update localStorage whenever form values change
@@ -65,8 +64,18 @@ export default function Shipping() {
         }
     }, [address, selectedState, selectedCity, postalCode, states, cities]);
 
+    // Handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (isValidShippingForm(address, selectedState, selectedCity, postalCode)) {
+            handleNextShipping(); // Call the handleNext function to navigate to the next step
+        } else {
+            alert('Please fill in all fields correctly. Postal code must be 6 digits.');
+        }
+    };
+
     return (
-        <form className="text-white">
+        <form className="text-white" onSubmit={handleSubmit}>
             <div data-mdb-input-init className="form-outline mb-4">
                 <label className="form-label mb-0" htmlFor="form4Example4">Address</label>
                 <input
@@ -121,7 +130,7 @@ export default function Shipping() {
             </div>
             <button
                 data-mdb-ripple-init
-                type="button"
+                type="submit"
                 className="theme-btn btn-one"
             >
                 <span>Go to Checkout</span>
@@ -129,4 +138,3 @@ export default function Shipping() {
         </form>
     );
 }
-
