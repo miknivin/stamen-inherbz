@@ -5,7 +5,7 @@ export default function Testimonial() {
         <>
             
             <section className="testimonial-section sec-pad bg-color-1">
-      <div className="bg-layer" style={{ backgroundImage: 'url(assets/images/background/testimonial-bg.jpg)' }}></div>
+      <div className="bg-layer" style={{ backgroundImage: 'url(assets/images/background/testimonial-bg.webp)' }}></div>
       <div className="pattern-layer" style={{ backgroundImage: 'url(assets/images/shape/shape-21.png)' }}></div>
       <div className="auto-container">
         <div className="row clearfix">

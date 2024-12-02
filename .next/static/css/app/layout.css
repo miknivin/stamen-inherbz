@@ -30078,9 +30078,9 @@ a.ui-button:active,
   transition: all 500ms ease;
 }
 
-.service-block-one .inner-box:hover{
+/* .service-block-one .inner-box:hover{
   box-shadow: 0px 2px 70px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .service-block-one .inner-box .image-box{
   position: relative;
@@ -30092,10 +30092,12 @@ a.ui-button:active,
   display: block;
   overflow: hidden;
   border-radius: 20px 20px 0px 0px;
+  border:none;
 }
 
 .service-block-one .inner-box .image-box .image img{
   width: 100%;
+  scale:1.05;
   transition: all 500ms ease;
 }
 

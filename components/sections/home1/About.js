@@ -17,7 +17,7 @@ export default function about() {
             <div className="image_block_one">
               <div className="image-box">
                 <div className="shape float-bob-x" style={{ backgroundImage: 'url(assets/images/shape/shape-7.png)' }}></div>
-                <figure className="image"><img src="assets/images/resource/about-1.jpg" alt="" /></figure>
+                <figure className="image"><img src="assets/images/resource/about-1.webp" alt="" /></figure>
                 <div className="icon-one"><i className="icon-13"></i></div>
                 <div className="icon-two"><i className="icon-14"></i></div>
                 {/* <div className="text-box">

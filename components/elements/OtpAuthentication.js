@@ -4,14 +4,18 @@ import { useState, useEffect } from 'react';
 import { auth, RecaptchaVerifier, signInWithPhoneNumber } from '../../firebase.config';
 import { PhoneAuthProvider, signInWithCredential } from 'firebase/auth';
 import { registerUser } from '@/services/auth/register';
+import { createOrder } from '@/services/orders/order';
+import transformUserDataToOrderSchema from '@/utils/transFormOrderData';
 
-const OTPAuthentication = ({ phone, name }) => {
+const OTPAuthentication = ({ phone, name, shippingInfo}) => {
   const [phoneNumber, setPhoneNumber] = useState(phone || '');
   const [Name,setName]=useState(name||'nivin');
   const [otp, setOtp] = useState('');
   const [verificationId, setVerificationId] = useState('');
 
   useEffect(() => {
+    console.log(shippingInfo);
+    
     if (phone) {
       handleSendOtp(phone);
     }
@@ -61,10 +65,26 @@ const OTPAuthentication = ({ phone, name }) => {
       if (result.user.accessToken) {
         const data = await registerUser(userData);
         console.log('User registered successfully:', data);
+        if (data.user.id) {
+          const orderData =  transformUserDataToOrderSchema(shippingInfo,data.user.id)
+          console.log('orderdata',orderData);
+          createOrder(orderData)
+        }
       }   
       
     } catch (error) {
       console.error('Error:', error.message);
+    }
+  };
+
+  const handleCreateOrder = async () => {
+    try {
+      const createdOrder = await createOrder(orderData);
+      console.log('Order created successfully:', createdOrder);
+
+    } catch (error) {
+      console.error('Failed to create order:', error);
+      // Handle the error (e.g., show an error message)
     }
   };
 

@@ -12,11 +12,24 @@ import OTPAuthentication from '@/components/elements/OtpAuthentication';
 export default function Home() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [ phoneNumber, setPhoneNumber]=useState("+919497505820");
-  const [userName, setUserName] = useState("")
+  const [ phoneNumber, setPhoneNumber]=useState("+916238002737");
+  const [userName, setUserName] = useState("");
+  const [shippingInfo, setShippingInfo] = useState(null);
   const handleNext = () => {
     if (currentStep === 3) {
-      setIsModalOpen(true);
+      // Retrieve shippingInfo from localStorage when moving to step 3
+      const shippingData = localStorage.getItem('shippingInfo');
+
+      if (shippingData) {
+        const parsedShippingData = JSON.parse(shippingData);
+        setShippingInfo(parsedShippingData);  
+
+        setUserName(parsedShippingData?.userName || ""); 
+
+        setIsModalOpen(true);  
+      } else {
+        console.error('Shipping info is not available in localStorage.');
+      }
     } else {
       setCurrentStep((prevStep) => prevStep + 1);
     }
@@ -126,7 +139,7 @@ export default function Home() {
             }
           }}
         >
-          <OTPAuthentication name={userName} phone={phoneNumber} />
+          <OTPAuthentication name={userName} phone={phoneNumber} shippingInfo={shippingInfo} />
         </Modal>
       </Layout>
     </>
