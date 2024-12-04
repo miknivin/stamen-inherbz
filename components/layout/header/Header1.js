@@ -129,6 +129,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                             </nav>
                             <ul className="menu-right-content">
                                 <div style={{ gap:'10px'}} className="d-flex btn-box">
+                                {(orders?.length>0)&&<Link href="/orders" className="card-link d-flex align-items-center text-white text-decoration-underline">My Orders</Link>}  
                                         <Link href="/checkout" className="theme-btn btn-one"><span>Get it now</span></Link>
                                         <Link href="/orders" className="theme-btn btn-one"><span>My orders</span></Link>
                                 </div>
