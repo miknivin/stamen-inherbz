@@ -94,7 +94,7 @@ export default function Shipping({ handleNextShipping }) {
                 <label className="form-label mb-0" htmlFor="form4Example6">State</label>
                 <select
                     id="form4Example6"
-                    className="form-control"
+                    className="form-control form-select"
                     value={selectedState}
                     onChange={(e) => setSelectedState(e.target.value)}
                 >

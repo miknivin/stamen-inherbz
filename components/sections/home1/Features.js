@@ -5,9 +5,8 @@ import { faCheckToSlot } from '@fortawesome/free-solid-svg-icons';
 export default function feature() {
   return (
     <section className="feature-section pt_120 pb_90">
-    <div className="shape" style={{ backgroundImage: 'url(assets/images/shape/shape-6.png)' }}></div>
     <div className="auto-container">
-      <div className="row clearfix align-items-stretch">
+      <div className="row clearfix align-items-stretch gap-mobile">
         <div className="col-lg-3 col-md-6 col-sm-12 feature-block">
           <div className="feature-block-one h-100">
             <div className="inner-box d-flex flex-column justify-content-between h-100">

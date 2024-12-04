@@ -95,6 +95,7 @@
   bottom: 210px;
   width: 106px;
   height: 106px;
+  background-size:contain;
   background-repeat: no-repeat;
   opacity: 0.6;
 }

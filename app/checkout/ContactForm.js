@@ -2,33 +2,43 @@
 import { useState, useEffect } from 'react';
 import { isValidForm } from '../../helpers/contactFormValidation'; 
 
-export default function ContactForm({ handleNext }) {
+export default function ContactForm({ handleNext, handleContactFormData }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
 
-    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        if (!isValidForm(name, email, phone)) {
+            alert('Please fill in all fields correctly.');
+            return;
+        }
         
         const existingShippingInfo = localStorage.getItem('shippingInfo');
         
         if (existingShippingInfo) {
-            handleNext();
-        } else {
-            if (isValidForm(name, email, phone)) {
+            const parsedShippingInfo = JSON.parse(existingShippingInfo);
+
+            if (
+                parsedShippingInfo.name !== name ||
+                parsedShippingInfo.email !== email ||
+                parsedShippingInfo.phone !== phone
+            ) {
                 const shippingInfo = { name, email, phone };
                 localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
-                alert('Shipping info saved!');
-                handleNext();
-            } else {
-                alert('Please fill in all fields correctly.');
             }
+
+            handleContactFormData(phone);
+            handleNext();
+        } else {
+            const shippingInfo = { name, email, phone };
+            localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
+            handleContactFormData(phone);
+            handleNext();
         }
     };
-    
 
-    // Populate form fields from localStorage
     useEffect(() => {
         const storedInfo = localStorage.getItem('shippingInfo');
         if (storedInfo) {
@@ -41,7 +51,6 @@ export default function ContactForm({ handleNext }) {
 
     return (
         <form className="text-white" onSubmit={handleSubmit}>
-            {/* Name input */}
             <div data-mdb-input-init className="form-outline mb-4">
                 <label className="form-label mb-0" htmlFor="form4Example1">
                     Name
@@ -54,7 +63,6 @@ export default function ContactForm({ handleNext }) {
                     onChange={(e) => setName(e.target.value)}
                 />
             </div>
-            {/* Email input */}
             <div data-mdb-input-init className="form-outline mb-4">
                 <label className="form-label mb-0" htmlFor="form4Example2">
                     Email address
@@ -67,7 +75,6 @@ export default function ContactForm({ handleNext }) {
                     onChange={(e) => setEmail(e.target.value)}
                 />
             </div>
-            {/* Phone input */}
             <div data-mdb-input-init className="form-outline mb-4">
                 <label className="form-label mb-0" htmlFor="form4Example3">
                     Phone
@@ -80,7 +87,6 @@ export default function ContactForm({ handleNext }) {
                     onChange={(e) => setPhone(e.target.value)}
                 />
             </div>
-            {/* Submit button */}
             <button
                 type="submit"
                 className="theme-btn btn-one"

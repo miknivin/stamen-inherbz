@@ -1,4 +1,4 @@
-export default function transformUserDataToOrderSchema(localStorageData, userId) {
+export default function transformUserDataToOrderSchema(localStorageData, userId, quantity) {
     return {
       shippingInfo: {
         fullName: localStorageData.name,
@@ -12,7 +12,7 @@ export default function transformUserDataToOrderSchema(localStorageData, userId)
       orderItems: [
         {
           name: 'Stamen Cream',
-          quantity: 1,
+          quantity: quantity||1,
           image: `${process.env.NEXT_PUBLIC_URL}/assets/images/banner/banner-img-1.png`,
           price: '500',
           product: 'product_id_here' 

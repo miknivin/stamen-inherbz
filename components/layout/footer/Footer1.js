@@ -18,10 +18,11 @@ export default function Footer1() {
                                 <figure style={{marginLeft:'-20px'}} className="footer-logo"><Link href="/"><img src="assets/images/logo.png" alt="" /></Link></figure>
                                 {/* <p>Lorem ipsum dolor sit amet constetur adipiscing elit. Etiam eu turpis mostie dictum est a, mattis tellus.</p> */}
                                 <ul className="social-links clearfix">
-                                    <li><Link href="/"><i className="icon-4"></i></Link></li>
-                                    <li><Link href="/"><i className="icon-5"></i></Link></li>
-                                    <li><Link href="/"><i className="icon-6"></i></Link></li>
-                                    <li><Link href="/"><i className="icon-7"></i></Link></li>
+                                    <li><a href="https://www.facebook.com/inherbzwellness"><i className="icon-7"></i></a></li>
+                                    <li><a href=""><i className="icon-4"></i></a></li>
+                                    {/* <li><Link href="/"><i className="icon-5"></i></Link></li> */}
+                                    {/* <li><Link href="/"><i className="icon-6"></i></Link></li> */}
+                                    
                                 </ul>
                             </div>
             </div>
@@ -43,7 +44,12 @@ export default function Footer1() {
             <div className="footer-widget contact-widget">
               <div className="widget-content">
                 <ul className="info-list">
-                  <li><img src="assets/images/icons/icon-1.png" alt="" />3891 Ranchview Dr. Richardson, California USA</li>
+                  <li><img src="assets/images/icons/icon-1.png" alt="" />
+                    inherbz Health Care LLP PWD Road,
+                    Near SN Jn, Nettoor(P.0), Marad,
+
+                    Ernakulam-Cochin, Kerala-682040
+                  </li>
                 </ul>
               </div>
             </div>
@@ -68,7 +74,7 @@ export default function Footer1() {
               <div className="footer-widget contact-widget">
               <div className="widget-content">
                 <ul className="info-list">
-                  <li><i className="icon-26"></i><Link href="mailto:example@info.com">example@info.com</Link></li>
+                  <li><i className="icon-26"></i><Link href="mailto:example@info.com">hello@inherbz.com</Link></li>
                 </ul>
               </div>
             </div>
@@ -80,7 +86,7 @@ export default function Footer1() {
                                 </div> */}
                                 <div className="widget-content">
                                     <ul className="info-list">
-                                      <li><i className="icon-2"></i><Link href="tel:01989526503">0198-9526503</Link></li> 
+                                      <li><i className="icon-2"></i><Link href="tel:+919738105105">+91 9738 105 105</Link></li> 
                                     </ul>
                                 </div>
                             </div>

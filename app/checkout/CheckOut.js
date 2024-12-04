@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-export default function CheckOut() {
-    const [quantity, setQuantity] = useState(1);
+export default function CheckOut({ quantity, onQuantityChange }) {
     const [shippingInfo, setShippingInfo] = useState({
         fullName: "",
         phone: "",
@@ -13,7 +12,6 @@ export default function CheckOut() {
     });
 
     useEffect(() => {
-        // Fetch shippingInfo from localStorage
         const storedInfo = JSON.parse(localStorage.getItem("shippingInfo"));
         if (storedInfo) {
             setShippingInfo(storedInfo);
@@ -21,37 +19,38 @@ export default function CheckOut() {
     }, []);
 
     const increaseQuantity = () => {
-        setQuantity(prevQuantity => prevQuantity + 1);
+        onQuantityChange(quantity + 1);
     };
 
     const decreaseQuantity = () => {
-        setQuantity(prevQuantity => Math.max(1, prevQuantity - 1));
+        onQuantityChange(Math.max(1, quantity - 1));
     };
 
     const handleQuantityChange = (event) => {
         const value = parseInt(event.target.value, 10);
         if (!isNaN(value) && value > 0) {
-            setQuantity(value);
+            onQuantityChange(value);
         }
     };
 
     return (
         <div className="card mb-3" style={{ maxWidth: '600px' }}>
             <div className="row no-gutters">
-                <div className="col-md-4" style={{ position: 'relative', height: '200px' }}>
+                <div className="col-md-4" style={{ position: 'relative', paddingLeft: '20px', paddingTop: '20px' }}>
                     <Image
-                        src={"/assets/images/gallery/gallery-1.jpg"}
+                        src={"/assets/images/gallery/gallery-1.png"}
                         width={100}
                         height={100}
                         alt="product image"
-                        objectFit="cover"
-                        className="card-img"
+                        quality={100}
+                        className="card-img pl-5"
+                        layout="responsive"
                     />
                 </div>
                 <div className="col-md-8">
                     <div className="card-body">
                         <h5 className="card-title">Stamen Cream</h5>
-                        <div className="card-text">
+                        <div style={{ fontSize: '0.9em' }} className="card-text text-black">
                             <div className="d-flex align-items-center">
                                 <button className="btn btn-outline-secondary" onClick={decreaseQuantity}>-</button>
                                 <input

@@ -14,7 +14,7 @@ export default function Process() {
           <span className="sub-title">Process</span>
           <h2 className="text-white">How it Helps You to <br />Keep Healthy</h2>
         </div>
-        <div className="inner-container mb-4">
+        <div className="inner-container gap-mobile-process mb-3">
           <div className="arrow-shape" style={{ backgroundImage: 'url(assets/images/shape/shape-18.png)' }}></div>
           <div className="processing-block-one wow fadeInLeft animated card d-flex  justify-content-center align-items-center rounded-4" data-wow-delay="00ms" data-wow-duration="1500ms">
             <div className="inner-box bg-white my-3 mx-2">
@@ -47,7 +47,7 @@ export default function Process() {
             </div>
           </div>
         </div>
-        <div className="inner-container">
+        <div className="inner-container gap-mobile-process">
           <div className="arrow-shape" style={{ backgroundImage: 'url(assets/images/shape/shape-18.png)' }}></div>
           <div className="processing-block-one wow fadeInLeft animated card d-flex  justify-content-center align-items-center rounded-4" data-wow-delay="00ms" data-wow-duration="1500ms">
             <div className="inner-box bg-white my-3 mx-2">
