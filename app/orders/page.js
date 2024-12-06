@@ -12,7 +12,7 @@ export default function OrdersPage() {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const apiUrl = 'http://localhost:3000/api/myOrders';
+    const apiUrl = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/myOrders`;
 
     const fetchOrders = async () => {
       try {

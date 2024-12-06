@@ -45,7 +45,7 @@ export default function about() {
                   </ul>
                 </div>
                 <div className="btn-box">
-                  <Link href="/#" className="theme-btn btn-one"><span>Discover More</span></Link>
+                  <Link href="/checkout" className="theme-btn btn-one"><span>Get it now</span></Link>
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const registerUser = async (userData) => {
   try {
-    const response = await axios.post('http://localhost:3000/api/auth/phone', userData, {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/phone`, userData, {
       withCredentials: true, // Ensures cookies are sent with the request
       headers: {
         'Content-Type': 'application/json', // Specify content type as JSON

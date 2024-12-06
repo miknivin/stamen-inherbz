@@ -21,7 +21,7 @@ export default function Video() {
           </div> */}
           <h2>Unlock Your Natural <br />Staying Power</h2>
           <div className="btn-box">
-            <Link href="/#" className="theme-btn btn-one"><span>Get it Now</span></Link>
+            <Link href="/checkout" className="theme-btn btn-one"><span>Get it Now</span></Link>
           </div>
         </div>
       </div>

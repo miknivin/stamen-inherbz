@@ -75,7 +75,7 @@ const handleQuantityChange = (newQuantity) => {
       if (shippingData) {
         const parsedShippingData = JSON.parse(shippingData);
         setShippingInfo(parsedShippingData);
-        setUserName(parsedShippingData?.userName || "");
+        setUserName(parsedShippingData?.name || "");
         setIsModalOpen(true);
       } else {
         console.error('error');
@@ -98,7 +98,7 @@ const handleQuantityChange = (newQuantity) => {
   };
 
   useEffect(() => {
-    console.log(phoneNumber);
+    console.log('ph');
   }, [phoneNumber]);
 
   const renderStepContent = () => {

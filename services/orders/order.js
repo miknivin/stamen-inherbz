@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const createOrder = async (orderData) => {
   try {
-    const response = await axios.post('http://localhost:3000/api/orders', orderData, {
+    const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/orders`, orderData, {
     withCredentials: true,
       headers: {
         'Content-Type': 'application/json',

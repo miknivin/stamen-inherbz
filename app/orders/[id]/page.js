@@ -14,7 +14,7 @@ export default function OrderDetailPage({params}) {
 
     const fetchOrder = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/myOrders/${id}`, {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/myOrders/${id}`, {
           withCredentials: true,
         });
         setOrder(response.data.data);

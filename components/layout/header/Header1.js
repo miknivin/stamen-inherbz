@@ -11,7 +11,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('http://localhost:3000/api/myOrders', {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/myOrders`, {
                     method: 'GET',
                     credentials: 'include' 
                 });

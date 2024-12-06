@@ -17,6 +17,7 @@ const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) 
   const [resendDisabled, setResendDisabled] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const [phoneError, setPhoneError] = useState('');
   useEffect(() => {
     if (timer > 0) {
       const countdown = setInterval(() => {
@@ -43,22 +44,48 @@ const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) 
     }
   };
 
-  const handleSendOtp = async (phoneNumberToSend) => {
-    setIsLoading(true);
-    setupRecaptcha();
-    const appVerifier = window?.recaptchaVerifier;
-    try {
-      const confirmationResult = await signInWithPhoneNumber(auth, phoneNumberToSend, appVerifier);
-      setVerificationId(confirmationResult.verificationId);
-      console.log('OTP sent');
-      setResendDisabled(true);
-      setTimer(60); 
-    } catch (error) {
-      console.error('Error sending OTP:', error);
-    } finally {
-      setIsLoading(false);
+  const validateAndFormatPhoneNumber = (phone) => {
+    phone = phone.trim();
+  
+    if (!phone.startsWith('+91')) {
+      phone = '+91' + phone;
+    }
+    
+    const phoneNumberWithoutPrefix = phone.replace('+91', '');
+  
+    const isValid = /^\d{10}$/.test(phoneNumberWithoutPrefix);
+  
+    if (isValid) {
+      return phone;
+    } else {
+      setPhoneError('Invalid phone number. It should contain exactly 10 digits');
+      throw new Error('Invalid phone number. It should contain exactly 10 digits');
     }
   };
+  
+  const handleSendOtp = async (phoneNumberToSend) => {
+    try {
+      const formattedPhoneNumber = validateAndFormatPhoneNumber(phoneNumberToSend);
+      setIsLoading(true);
+      setupRecaptcha();
+      const appVerifier = window?.recaptchaVerifier;
+      try {
+        const confirmationResult = await signInWithPhoneNumber(auth, formattedPhoneNumber, appVerifier);
+        setVerificationId(confirmationResult.verificationId);
+        console.log('OTP sent');
+        setPhoneNumber(formattedPhoneNumber)
+        setResendDisabled(true);
+        setTimer(60); 
+      } catch (error) {
+        console.error('Error sending OTP:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    } catch (validationError) {
+        console.error(validationError)
+    }
+  };
+
 
   const handleVerifyOtp = async () => {
     setIsLoading(true);
@@ -92,9 +119,9 @@ const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) 
               cancelButtonText: 'View Orders',
             }).then((result) => {
               if (result.isConfirmed) {
-                router.push('/order-details');
+                router.push(`/orders/${orderRes._id}`);
               } else {
-                router.push('/view-orders');
+                router.push(`/orders`);
               }
             });
             closeModal();
@@ -126,6 +153,7 @@ const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) 
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   placeholder="Enter phone number"
                 />
+                 {phoneError && <div className="text-danger">{phoneError}</div>}
               </div>
               <div className="d-grid mb-4">
                 <button className="btn btn-primary" onClick={() => handleSendOtp(phoneNumber)} disabled={isLoading}>
