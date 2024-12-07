@@ -36,7 +36,7 @@ export default function about() {
                 </div>
                 <div className="text-box mb_40">
                   <h6>Crafted for safe, long-term use</h6>
-                  <p>Stamen Cream’s natural, side effect-free formula means you can enjoy its benefits with complete peace of mind. However, we recommend testing a small amount first to ensure no allergic reaction to the botanical ingredients.</p>
+                  <p style={{color:"#acacac"}}>Stamen Cream’s natural, side effect-free formula means you can enjoy its benefits with complete peace of mind. However, we recommend testing a small amount first to ensure no allergic reaction to the botanical ingredients.</p>
                   <ul className="list-style-one clearfix">
                     <li>Natural</li>
                     <li>Herbal formula</li>
