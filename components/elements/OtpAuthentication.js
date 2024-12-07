@@ -7,6 +7,8 @@ import { createOrder } from '@/services/orders/order';
 import transformUserDataToOrderSchema from '@/utils/transFormOrderData';
 import { useRouter } from 'next/navigation';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) => {
   const [phoneNumber, setPhoneNumber] = useState(phone || '');
@@ -18,6 +20,7 @@ const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) 
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const [phoneError, setPhoneError] = useState('');
+  const [error, setError] = useState(""); 
   useEffect(() => {
     if (timer > 0) {
       const countdown = setInterval(() => {
@@ -65,26 +68,28 @@ const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) 
   
   const handleSendOtp = async (phoneNumberToSend) => {
     try {
-      const formattedPhoneNumber = validateAndFormatPhoneNumber(phoneNumberToSend);
-      setIsLoading(true);
-      setupRecaptcha();
-      const appVerifier = window?.recaptchaVerifier;
-      try {
-        const confirmationResult = await signInWithPhoneNumber(auth, formattedPhoneNumber, appVerifier);
-        setVerificationId(confirmationResult.verificationId);
-        console.log('OTP sent');
-        setPhoneNumber(formattedPhoneNumber)
-        setResendDisabled(true);
-        setTimer(60); 
-      } catch (error) {
-        console.error('Error sending OTP:', error);
-      } finally {
-        setIsLoading(false);
-      }
+        const formattedPhoneNumber = validateAndFormatPhoneNumber(phoneNumberToSend);
+        setIsLoading(true);
+        setupRecaptcha();
+        const appVerifier = window?.recaptchaVerifier;
+        try {
+            const confirmationResult = await signInWithPhoneNumber(auth, formattedPhoneNumber, appVerifier);
+            setVerificationId(confirmationResult.verificationId);
+            console.log('OTP sent');
+            setPhoneNumber(formattedPhoneNumber);
+            setResendDisabled(true);
+            setTimer(60);
+        } catch (error) {
+            console.error('Error sending OTP:', error);
+            setError("Error sending OTP. Please check the phone number and try again.");
+        } finally {
+            setIsLoading(false);
+        }
     } catch (validationError) {
-        console.error(validationError)
+        console.error(validationError);
+        setError("Invalid phone number format. Please enter a valid phone number.");
     }
-  };
+};
 
 
   const handleVerifyOtp = async () => {
@@ -139,11 +144,21 @@ const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) 
   return (
     <div className="container mt-2 ">
       <div id="recaptcha-container"></div>
+      <div style={{height:"fit-content"}} className='d-flex justify-content-end'>
+        <button onClick={()=>closeModal()}>
+          <FontAwesomeIcon color='#000' icon={faX} />
+        </button>
+      </div>
       <div className="row justify-content-center">
         <div className="col-md-12">
           {!verificationId && (
             <>
               <div className="mb-3">
+              {error && (
+                <div style={{ color: 'red', marginBottom: '10px' }}>
+                    <p>{error}</p>
+                </div>
+              )}
                 <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
                 <input
                   type="tel"
@@ -158,7 +173,7 @@ const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) 
               <div className="d-grid mb-4">
                 <button className="btn btn-primary" onClick={() => handleSendOtp(phoneNumber)} disabled={isLoading}>
                   {isLoading ? (
-                    <div className="spinner-border text-light" role="status">
+                    <div style={{width:'2rem',height:'2rem'}} className="spinner-border text-light" role="status">
                       <span className="visually-hidden">Loading...</span>
                     </div>
                   ) : (
@@ -185,7 +200,7 @@ const OTPAuthentication = ({ phone, name, shippingInfo, Quantity, closeModal }) 
               <div className="d-grid mb-3">
                 <button className="btn btn-success" onClick={handleVerifyOtp} disabled={isLoading}>
                   {isLoading ? (
-                    <div className="spinner-border text-light" role="status">
+                    <div style={{width:'2rem',height:'2rem'}} className="spinner-border text-light" role="status">
                       <span className="visually-hidden">Loading...</span>
                     </div>
                   ) : (

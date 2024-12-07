@@ -18,7 +18,7 @@ import Header2 from './header/Header2';
 import Header3 from "./header/Header3";
 import Header4 from "./header/Header4";
 
-export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, children, wrapperCls }) {
+export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumbTitle, children, wrapperCls, path }) {
     const [scroll, setScroll] = useState(0);
     const [isMobileMenu, setMobileMenu] = useState(false);
     const handleMobileMenu = () => {
@@ -49,7 +49,7 @@ export default function Layout({ headerStyle, footerStyle, headTitle, breadcrumb
         <>
             <DataBg />
             <div className={`boxed_wrapper ltr ${wrapperCls ? wrapperCls : ""}`} id="#top">
-                {(headerStyle === 1 || !headerStyle) && <Header1 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
+                {(headerStyle === 1 || !headerStyle) && <Header1 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} pathName={path}/>}
                 {headerStyle === 2 && <Header2 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
                 {headerStyle === 3 && <Header3 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}
                 {headerStyle === 4 && <Header4 scroll={scroll} isMobileMenu={isMobileMenu} handleMobileMenu={handleMobileMenu} handlePopup={handlePopup} isSidebar={isSidebar} handleSidebar={handleSidebar} />}

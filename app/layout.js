@@ -6,7 +6,7 @@ import 'swiper/css'
 // import "swiper/css/navigation"
 import "swiper/css/pagination"
 import 'swiper/css/free-mode';
-import { poppins } from '@/lib/font'
+import { gotham } from '@/lib/font'
 export const metadata = {
     title: 'inHerbz',
     description: 'Stamen',
@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en" className={`${poppins.variable}`}>
+        <html lang="en" className={`${gotham.variable}`}>
             <body>{children}</body>
         </html>
     )

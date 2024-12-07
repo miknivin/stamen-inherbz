@@ -34,18 +34,15 @@ export default function CheckOut({ quantity, onQuantityChange }) {
     };
 
     return (
-        <div className="card mb-3" style={{ maxWidth: '600px' }}>
+        <div className="card mb-3" style={{ maxWidth: '600px', overflow:"hidden" }}>
             <div className="row no-gutters">
-                <div className="col-md-4" style={{ position: 'relative', paddingLeft: '20px', paddingTop: '20px' }}>
-                    <Image
-                        src={"/assets/images/gallery/gallery-1.png"}
-                        width={100}
-                        height={100}
-                        alt="product image"
-                        quality={100}
-                        className="card-img pl-5"
-                        layout="responsive"
-                    />
+                <div className="col-md-4" style={{ display:'flex',position: 'relative', paddingRight:0}}>
+                <img
+                    src="/assets/images/gallery/gallery-1.png"
+                    alt="product image"
+                    style={{objectFit:'cover',borderRadius:'unset'}}
+                    className="card-img w-100 h-auto"
+                />
                 </div>
                 <div className="col-md-8">
                     <div className="card-body">

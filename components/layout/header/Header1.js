@@ -1,31 +1,68 @@
 'use client'
 import Link from "next/link";
-import Menu from "../Menu";
-import MobileMenu from "../MobileMenu";
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Modal from 'react-modal';
+import OTPRegister from "@/components/elements/OtpRegistration";
+import { Toaster, toast } from 'react-hot-toast';
 
-export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSidebar, handlePopup, handleSidebar }) {
+export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSidebar, handlePopup, handleSidebar, pathName }) {
     const [orders, setOrders] = useState(null);
+    const [isUser, setIsUser] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const router = useRouter();
+    
+    const isCheckoutRoute = pathName === 'checkout';
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        fetchData();  // Call fetchData when the modal is closed
+    };
+    
+    const logout = async () => {
+        try {
+          const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/logout`, {
+            method: 'GET',
+            credentials: 'include',
+          });
+    
+          const data = await response.json();
+    
+          if (response.ok) {
+            setIsUser(false);
+            setOrders(null);
+            toast.success('Logged out successfully!');
+          } else {
+            console.error('Error logging out', data);
+            toast.error(`Logout failed: ${data.message}`);
+          }
+        } catch (error) {
+          console.error('Error while logging out', error);
+          toast.error('Error while logging out');
+        }
+      };
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/myOrders`, {
+                method: 'GET',
+                credentials: 'include',
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setIsUser(true);
+                setOrders(data.data);
+            } else {
+                console.error('Failed to fetch data:', data);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/myOrders`, {
-                    method: 'GET',
-                    credentials: 'include' 
-                });
-                const data = await response.json();
-                if (response.ok) {
-                    setOrders(data.data);
-                } else {
-                    console.error('Failed to fetch data:', data);
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-
         fetchData();
     }, []);
 
@@ -56,17 +93,6 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                                             <i className="icon-4"></i>
                                         </a>
                                     </li>
-                                    {/* <li>
-                                        <Link href="/">
-                                            <i className="icon-5"></i>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/">
-                                            <i className="icon-6"></i>
-                                        </Link>
-                                    </li> */}
-                                   
                                 </ul>
                             </div>
                         </div>
@@ -79,36 +105,53 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                                     <div className="logo-box">
                                         <figure className="logo">
                                             <Link href="/">
-                                                <Image 
+                                                <img 
                                                     src="/assets/images/logo.png" 
                                                     alt="Logo" 
-                                                    layout="responsive" 
-                                                    width={50} 
-                                                    height={50} 
                                                     style={{ width: '100%', height: 'auto' }} 
                                                 />
                                             </Link>
                                         </figure>
                                     </div>
-                                    {/* Uncomment and update the following block if needed */}
-                                    {/* <div className="menu-area">
-                                        <div className="mobile-nav-toggler" onClick={handleMobileMenu}>
-                                            <i className="icon-bar"></i>
-                                            <i className="icon-bar"></i>
-                                            <i className="icon-bar"></i>
+                                    <>
+                                        <div className="justify-content-center align-items-center mobile-fixed">
+                                            {!isCheckoutRoute && (
+                                            <Link href="/checkout" className="theme-btn btn-one">
+                                                <span>Get it now</span>
+                                            </Link>
+                                            )}
                                         </div>
-                                        <nav className="main-menu navbar-expand-md navbar-light clearfix">
-                                            <div className="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                                                <Menu/>
-                                            </div>
-                                        </nav>
-                                    </div> */}
-                                    <div className="justify-content-center align-items-center mobile-fixed">
-                                        <Link href="/checkout" className="theme-btn btn-one"><span>Get it now</span></Link>
-                                    </div>
-                                    <div style={{ gap:'10px'}} className="d-flex btn-box">
-                                    {(orders?.length>0)&&<Link href="/orders" className="card-link d-flex align-items-center text-white text-decoration-underline">My Orders</Link>}  
-                                        <Link href="/checkout" className="theme-btn btn-one mobile-hide"><span>Get it now</span></Link>           
+                                        <div style={{ gap: '10px', width:"100%",justifyContent:'end'}} className="d-flex btn-box">
+                                            {orders?.length > 0 && (
+                                            <Link href="/orders" className="card-link d-flex align-items-center text-white text-decoration-underline">
+                                                My Orders
+                                            </Link>
+                                            )}
+                                            {!isCheckoutRoute && (
+                                            <Link href="/checkout" className="theme-btn btn-one mobile-hide">
+                                                <span>Get it now</span>
+                                            </Link>
+                                            )}
+                                            {!isUser ? (
+                                                <button title="login" onClick={() => setIsModalOpen(!isModalOpen)} className="theme-btn btn-one">
+                                                    <span style={{ borderRadius:"50%" }} className="p-3">
+                                                        <svg className="text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                            <path stroke="currentColor" strokeWidth="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            ) : (
+                                                <button title="logout" onClick={() => logout()} className="theme-btn btn-one">
+                                                    <span style={{ borderRadius:"50%" }} className="p-3">
+                                                        <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
+                                                        </svg>
+                                                    </span>
+                                                </button>
+                                            )}
+                                        </div>
+                                    </>
+                                    <div className="">
                                     </div>
                                 </div>
                             </div>
@@ -124,13 +167,33 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                             </div>
                             <nav className="main-menu navbar-expand-md navbar-light clearfix">
                                 <div className="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                                    {/* <Menu/> */}
                                 </div>
                             </nav>
                             <ul className="menu-right-content">
-                                <div style={{ gap:'10px'}} className="d-flex btn-box">
-                                        {(orders?.length>0)&&<Link href="/orders" className="card-link d-flex align-items-center text-white text-decoration-underline">My Orders</Link>}  
-                                        <Link href="/checkout" className="theme-btn btn-one"><span>Get it now</span></Link>
+                                <div style={{ gap:'10px' }} className="d-flex btn-box">
+                                    {(orders?.length > 0) && <Link href="/orders" className="card-link d-flex align-items-center text-white text-decoration-underline">My Orders</Link>}
+                                    {!isCheckoutRoute && (
+                                            <Link href="/checkout" className="theme-btn btn-one mobile-hide">
+                                                <span>Get it now</span>
+                                            </Link>
+                                    )}
+                                    {!isUser ? (
+                                        <button title="login" onClick={() => setIsModalOpen(!isModalOpen)} className="theme-btn btn-one">
+                                            <span style={{ borderRadius:"50%" }} className="p-3">
+                                                <svg className="text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" strokeWidth="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    ) : (
+                                        <button title="logout" onClick={() => logout()} className="theme-btn btn-one">
+                                            <span style={{ borderRadius:"50%" }} className="p-3">
+                                                <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
+                                                </svg>
+                                            </span>
+                                        </button>
+                                    )}
                                 </div>
                             </ul>
                         </div>
@@ -138,8 +201,36 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                 </div>
                 {/* End Sticky Menu */}
                 {/* Mobile Menu */}
-                <MobileMenu handleMobileMenu={handleMobileMenu} />
+                {/* <MobileMenu handleMobileMenu={handleMobileMenu} /> */}
             </header>
+
+            <Modal
+                isOpen={isModalOpen}
+                onRequestClose={() => setIsModalOpen(false)}
+                ariaHideApp={false}
+                style={{
+                    overlay: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.75)',
+                        zIndex: 9999999,
+                    },
+                    content: {
+                        top: '50%',
+                        left: '50%',
+                        right: 'auto',
+                        bottom: 'auto',
+                        marginRight: '-50%',
+                        transform: 'translate(-50%, -50%)',
+                        padding: '20px',
+                        borderRadius: '10px',
+                        maxWidth: '500px',
+                        overflow: 'hidden',
+                        width: '100%',
+                    }
+                }}
+            >
+                <OTPRegister closeModal={closeModal} />
+            </Modal>
+            <Toaster position="top-right"/>
         </>
     );
 }

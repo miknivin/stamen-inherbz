@@ -26,7 +26,7 @@ export default function Home() {
                 {/* <Funfacts /> */}
                 {/* <Team /> */}
                 <Video />
-                <Process />
+                {/* <Process /> */}
                 <Testimonial />
                 {/* <Pricing /> */}
                 {/* <News />

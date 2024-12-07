@@ -138,7 +138,7 @@ const handleQuantityChange = (newQuantity) => {
 
   return (
     <>
-      <Layout headerStyle={1} footerStyle={1}>
+      <Layout headerStyle={1} footerStyle={1} path={'checkout'}>
         <div className={styles.stepperWrapper}>
           <div className={styles.steps}>
             <button
