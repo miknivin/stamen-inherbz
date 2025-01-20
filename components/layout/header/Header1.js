@@ -128,12 +128,12 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                                             </Link>
                                             )}
                                             {!isCheckoutRoute && (
-                                            <Link href="/checkout" className="theme-btn btn-one mobile-hide">
+                                            <Link href="/checkout" className="theme-btn btn-two mobile-hide">
                                                 <span>Order now</span>
                                             </Link>
                                             )}
                                             {!isUser ? (
-                                                <button title="login" onClick={() => setIsModalOpen(!isModalOpen)} className="theme-btn btn-one">
+                                                <button title="login" onClick={() => setIsModalOpen(!isModalOpen)} className="theme-btn btn-two">
                                                     <span style={{ borderRadius:"50%" }} className="p-3">
                                                         <svg className="text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                             <path stroke="currentColor" strokeWidth="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
@@ -173,12 +173,12 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                                 <div style={{ gap:'10px' }} className="d-flex btn-box">
                                     {(orders?.length > 0) && <Link href="/orders" className="card-link d-flex align-items-center text-white text-decoration-underline">My Orders</Link>}
                                     {!isCheckoutRoute && (
-                                            <Link href="/checkout" className="theme-btn btn-one mobile-hide">
+                                            <Link href="/checkout" className="theme-btn btn-two mobile-hide">
                                                 <span>Order Now</span>
                                             </Link>
                                     )}
                                     {!isUser ? (
-                                        <button title="login" onClick={() => setIsModalOpen(!isModalOpen)} className="theme-btn btn-one">
+                                        <button title="login" onClick={() => setIsModalOpen(!isModalOpen)} className="theme-btn btn-two">
                                             <span style={{ borderRadius:"50%" }} className="p-3">
                                                 <svg className="text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                                     <path stroke="currentColor" strokeWidth="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>

@@ -11,7 +11,7 @@
   top: 0px;
   width: 50%;
   height: 100%;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }

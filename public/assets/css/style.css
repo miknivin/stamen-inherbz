@@ -126,6 +126,7 @@
   --button-text:#fff;
   --main-bg:#f9f9f9;
   --button-one-hover:#000;
+  --btn-header:#fff;
   --odd-section:#3e0005;
   --main-heading:rgb(0, 0, 0);
   --secondary-text:rgb(57, 57, 57);
@@ -458,8 +459,12 @@ img {
 }
 
 .theme-btn.btn-two{
-  color:#fff;
-  background: var(--secondary-color);
+  color:var(--secondary-color);
+  background: var(--btn-header);
+}
+
+.theme-btn.btn-two span{
+  color:var(--secondary-color) !important;
 }
 
 .theme-btn.btn-two:hover{
@@ -500,6 +505,10 @@ img {
 
 .theme-btn:after {
   background: #0E1D40;
+}
+
+a .theme-btn .btn-two{
+  background:var(--btn-header) !important;
 }
 
 .theme-btn span{
