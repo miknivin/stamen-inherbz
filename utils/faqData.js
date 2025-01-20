@@ -72,7 +72,7 @@ export const faqData = [
         answer: `<p>Yes, our customer care team is here to help!</p>
 <ul>
     <li>Phone: <a href="tel:9738105105">9738105105</a></li>
-    <li>Email: <a href="mailto:[Insert Email Address]">[Insert Email Address]</a></li>
+    <li>Email: <a href="mailto:hello@inherbz.com">hello@inherbz.com</a></li>
     <li>Support is available from 9 AM to 7 PM, Monday to Saturday.</li>
 </ul>
 `

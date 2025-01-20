@@ -28351,7 +28351,7 @@ a.ui-button:active,
   border: 1px solid rgba(103, 103, 103, 1);
   border-radius: 50%;
   text-align: center;
-  top: 20px;
+  top: auto !important;
   right: 40px;
 }
 
@@ -28363,6 +28363,10 @@ a.ui-button:active,
 
 .accordion .acc-content {
   padding: 8px 22px 15px; /* Set top padding to 8px, keep left and right as 22px, bottom as 15px */
+}
+
+.accordion-box{
+  position:relative;
 }
 
 
@@ -32005,7 +32009,7 @@ a.ui-button:active,
 .video-section{
   position: relative;
   overflow: hidden;
-  padding: 145px 0px;
+  padding: 200px 0px;
 }
 
 .video-section .bg-layer:before{

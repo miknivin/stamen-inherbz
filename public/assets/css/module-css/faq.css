@@ -47,7 +47,7 @@
   border: 1px solid rgba(103, 103, 103, 1);
   border-radius: 50%;
   text-align: center;
-  top: 20px;
+  top: auto !important;
   right: 40px;
 }
 
@@ -59,6 +59,10 @@
 
 .accordion .acc-content {
   padding: 8px 22px 15px; /* Set top padding to 8px, keep left and right as 22px, bottom as 15px */
+}
+
+.accordion-box{
+  position:relative;
 }
 
 
