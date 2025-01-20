@@ -1,12 +1,20 @@
 'use client';
 
 import { faqData } from "@/utils/faqData";
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import DOMPurify from "dompurify"; // Import DOMPurify
 import '../../public/assets/css/module-css/faq.css';
 
 export default function Faq() {
     const [isActive, setIsActive] = useState({ key: null });
+
+    // Memoize the DOMPurify instance to ensure it works only in the browser
+    const domPurifyInstance = useMemo(() => {
+        if (typeof window !== "undefined") {
+            return DOMPurify;
+        }
+        return null;
+    }, []);
 
     const handleToggle = (key) => {
         setIsActive((prevState) =>
@@ -43,7 +51,9 @@ export default function Faq() {
                                                 <div
                                                     className="text"
                                                     dangerouslySetInnerHTML={{
-                                                        __html: DOMPurify.sanitize(faq.answer),
+                                                        __html: domPurifyInstance
+                                                            ? domPurifyInstance.sanitize(faq.answer)
+                                                            : faq.answer,
                                                     }}
                                                 />
                                             </div>
