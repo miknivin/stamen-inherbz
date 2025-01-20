@@ -16,7 +16,7 @@
 
 .accordion .acc-btn{
   position: relative;
-  padding: 20px 70px 20px 40px;
+  padding: 17px 70px 20px 20px;
   cursor: pointer;
   background: #fff;
 }
@@ -57,9 +57,10 @@
   border-color: #fff;
 }
 
-.accordion .acc-content{
-  padding: 40px;
+.accordion .acc-content {
+  padding: 8px 22px 15px; /* Set top padding to 8px, keep left and right as 22px, bottom as 15px */
 }
+
 
 .faq-section .image-layer{
   position: absolute;
@@ -67,8 +68,14 @@
   bottom: 0px;
 }
 
+.text ul li{
+  list-style-type: disc !important;
+}
 
-
+.text ul{
+  list-style-type: disc !important;
+  padding-left:15px;
+}
 
 
 /** RTL-CSS **/

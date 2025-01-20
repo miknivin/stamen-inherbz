@@ -32,11 +32,11 @@ export default function about() {
               <div className="content-box ml_30">
                 <div className="sec-title mb_15">
                   <span className="sub-title">About the product</span>
-                  <h2 className="text-white">Safe, Side Effect-Free Formulation</h2>
+                  <h2 className="main-heading">Safe, Side Effect-Free Formulation</h2>
                 </div>
                 <div className="text-box mb_40">
                   <h6>Crafted for safe, long-term use</h6>
-                  <p style={{color:"#acacac"}}>Stamen Cream’s natural, side effect-free formula means you can enjoy its benefits with complete peace of mind. However, we recommend testing a small amount first to ensure no allergic reaction to the botanical ingredients.</p>
+                  <p >Stamen Cream’s natural, side effect-free formula means you can enjoy its benefits with complete peace of mind. However, we recommend testing a small amount first to ensure no allergic reaction to the botanical ingredients.</p>
                   <ul className="list-style-one clearfix">
                     <li>Natural</li>
                     <li>Herbal formula</li>
@@ -45,7 +45,7 @@ export default function about() {
                   </ul>
                 </div>
                 <div className="btn-box">
-                  <Link href="/checkout" className="theme-btn btn-one"><span>Get it now</span></Link>
+                  <Link href="/checkout" className="theme-btn btn-one"><span>Order now</span></Link>
                 </div>
               </div>
             </div>

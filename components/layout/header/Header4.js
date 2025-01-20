@@ -78,7 +78,7 @@ export default function Header4({ scroll, isMobileMenu, handleMobileMenu, isSide
                             </nav>
                             </div>
                             <div className="btn-box">
-                        <Link href="/" className="theme-btn btn-one"><span>Get it now</span></Link>
+                        <Link href="/" className="theme-btn btn-one"><span>Order now</span></Link>
                     </div>
                         </div>
                     </div>

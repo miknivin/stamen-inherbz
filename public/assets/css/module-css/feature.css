@@ -64,7 +64,8 @@
 
 .feature-block-one .inner-box h3 a{
   display: inline-block;
-  color: var(--title-color);
+  font-size:23px;
+  color: var(--card-title);
 }
 
 .feature-block-one .inner-box h3 a:hover{

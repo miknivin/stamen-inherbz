@@ -10,7 +10,7 @@ export default function service() {
     <div className="auto-container">
       <div className="sec-title mb_50 centred">
         {/* <span className="sub-title">Our Services</span> */}
-        <h2 className="text-white">Boost Your Confidence,<br /> Deepen Your Connection</h2>
+        <h2>Boost Your Confidence,<br /> Deepen Your Connection</h2>
       </div>
       <div className="row clearfix">
         <div className="col-lg-4 col-md-6 col-sm-12 service-block">

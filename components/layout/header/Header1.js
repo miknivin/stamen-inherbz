@@ -117,7 +117,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                                         <div className="justify-content-center align-items-center mobile-fixed">
                                             {!isCheckoutRoute && (
                                             <Link href="/checkout" className="theme-btn btn-one">
-                                                <span>Get it now</span>
+                                                <span>Order now</span>
                                             </Link>
                                             )}
                                         </div>
@@ -129,7 +129,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                                             )}
                                             {!isCheckoutRoute && (
                                             <Link href="/checkout" className="theme-btn btn-one mobile-hide">
-                                                <span>Get it now</span>
+                                                <span>Order now</span>
                                             </Link>
                                             )}
                                             {!isUser ? (
@@ -174,7 +174,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isSide
                                     {(orders?.length > 0) && <Link href="/orders" className="card-link d-flex align-items-center text-white text-decoration-underline">My Orders</Link>}
                                     {!isCheckoutRoute && (
                                             <Link href="/checkout" className="theme-btn btn-one mobile-hide">
-                                                <span>Get it now</span>
+                                                <span>Order Now</span>
                                             </Link>
                                     )}
                                     {!isUser ? (

@@ -4,7 +4,7 @@
 .chooseus-section{
   position: relative;
   padding: 114px 0px 160px 0px;
-  background-color: #4c0c11d6;
+  background-color: var(--odd-section);
 }
 
 .chooseus-section .bg-layer{

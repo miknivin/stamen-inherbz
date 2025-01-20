@@ -27,7 +27,8 @@ export default function faq() {
       <div className="sec-title centred mb_50">
                     <span className="sub-title">FAQ'S</span>
                     <h2>Do You Have Any Medical <br />Questions?</h2>
-                </div>
+                    
+      </div>
         <div className="row clearfix">
           <div className="col-xl-7 col-lg-12 col-md-12 offset-xl-5 content-column">
             <div className="content-box">

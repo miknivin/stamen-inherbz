@@ -35,7 +35,7 @@ export default function OrdersPage() {
   if (loading) {
     return (
       <div className='w-100 h-100 d-flex justify-content-center align-items-center'>
-        <div className="spinner-border text-primary mt-5" role="status">
+        <div className="spinner-border text-danger mt-5" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
       </div>
@@ -85,8 +85,8 @@ export default function OrdersPage() {
   return (
     <>
       <Layout headerStyle={1} footerStyle={1}>
-        <div style={{marginTop:"100px"}} className="d-flex justify-content-center flex-column align-items-center text-center">
-          <h1 className="text-white">Orders</h1>
+        <div style={{marginTop:"100px"}} className="d-flex justify-content-center flex-column align-items-center text-center pb-4">
+          <h1>Orders</h1>
         <div style={{gap:'10px'}} className='d-flex justify-content-between w-100 align-items-center container'>
             {/* Search Box */}
           <input
@@ -120,7 +120,7 @@ export default function OrdersPage() {
           ) : (
             <>
               <div style={{overflow:'auto',width:"100%"}} className='container'>
-                <table className="table text-white">
+                <table className="table">
                   <thead>
                     <tr>
                       <th>Order ID</th>
@@ -137,14 +137,14 @@ export default function OrdersPage() {
                         <td>{new Date(order.createdAt).toLocaleDateString()}</td>
                         <td>{order.totalAmount}</td>
                         <td>{order.orderStatus}</td>
-                        <td><Link href={`/orders/${order._id}`} className="btn btn-primary">View</Link></td>
+                        <td><Link href={`/orders/${order._id}`} className="btn btn-danger">View</Link></td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>     
               {/* Bootstrap Pagination */}
-              <nav aria-label="Page navigation example">
+              <nav aria-label="Page navigation example pb-3">
                 <ul className="pagination">
                   <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                     <button

@@ -11,12 +11,14 @@ import Subscribe from "@/components/sections/home1/Subscribe"
 import Team from "@/components/sections/home1/Team"
 import Video from "@/components/sections/home1/Video"
 import Process from "@/components/sections/home1/Process"
+import Faq from "@/components/elements/Faq"
+import Preloader from "@/components/elements/Preloader"
+
 export default function Home() {
 
 
     return (
         <>
- 
             <Layout headerStyle={1} footerStyle={1}>
                 <Banner />
                 <Features />
@@ -27,7 +29,9 @@ export default function Home() {
                 {/* <Team /> */}
                 <Video />
                 {/* <Process /> */}
+
                 <Testimonial />
+                <Faq/>
                 {/* <Pricing /> */}
                 {/* <News />
                 <Subscribe /> */}

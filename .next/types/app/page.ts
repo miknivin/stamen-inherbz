@@ -1,4 +1,4 @@
-// File: C:\Users\nivin\Downloads\medimart pack\medimart\app\page.js
+// File: C:\Users\nivin\Downloads\stamen-landing_page\stamen\app\page.js
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

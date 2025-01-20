@@ -13,7 +13,7 @@ export default function Testimonial() {
             <div className="content-box p_relative ml_45">
               <div className="sec-title mb_50">
                 <span className="sub-title">Testimonials</span>
-                <h2 className="text-white">What Our Client Say About inHerbz</h2>
+                <h2>What Our Client Say About inHerbz</h2>
               </div>
                     <div className="content-box">
                         <TestimonialSlider1 />                        
