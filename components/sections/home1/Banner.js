@@ -1,5 +1,7 @@
 import React from 'react';
-import Link from "next/link"
+import Link from "next/link";
+import { nextArt } from '@/lib/font';
+
 export default function Banner() {
   return (
     <section className="banner-section p_relative">
@@ -15,7 +17,10 @@ export default function Banner() {
           <div className="col-lg-6 col-md-12 col-sm-12 content-column">
             <div className="content-box">
               <span className="upper-text">Unleash Your Staying Power</span>
-              <h2>inHerbz <span>Stamen</span> Cream.</h2>
+              <h2 style={{ fontFamily: `${nextArt.style.fontFamily} !important` }}>
+                inHerbz <span>Stamen</span> Cream.
+              </h2>
+
               <p className='mb-0'>Are you struggling with premature ejaculation? </p>
               <p  className='mb-0'>Do you wish you could last longer in bed to fully satisfy your partner?</p>
               <p  className='mb-5'>Introducing inHerbz Stamen Cream - the natural solution to help you control your climax and enjoy intimate moments without cutting them short.</p>

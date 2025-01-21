@@ -434,6 +434,13 @@ img {
   --bs-gutter-x: 30px;
 }
 
+.banner-section .content-box h2 {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-family: var(--next-art) !important;
+}
+
 /** button **/
 
 

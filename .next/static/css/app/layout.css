@@ -33023,6 +33023,13 @@ img {
   --bs-gutter-x: 30px;
 }
 
+.banner-section .content-box h2 {
+  position: relative;
+  display: inline-block;
+  font-weight: 400;
+  font-family: var(--next-art) !important;
+}
+
 /** button **/
 
 
@@ -35908,5 +35915,43 @@ font-style: normal;
 }@font-face {font-family: '__gotham_Fallback_6fbe06';src: local("Arial");ascent-override: 87.62%;descent-override: 23.24%;line-gap-override: 0.00%;size-adjust: 113.46%
 }.__className_6fbe06 {font-family: '__gotham_6fbe06', '__gotham_Fallback_6fbe06'
 }.__variable_6fbe06 {--gotham: '__gotham_6fbe06', '__gotham_Fallback_6fbe06'
+}
+
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[3].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[14].oneOf[3].use[2]!./node_modules/next/font/local/target.css?{"path":"lib\\font.js","import":"","arguments":[{"src":[{"path":"../public/assets/fonts/NEXT ART_Light.woff2","weight":"300","style":"normal"},{"path":"../public/assets/fonts/NEXT ART_Regular.woff2","weight":"400","style":"normal"},{"path":"../public/assets/fonts/NEXT ART_SemiBold.woff2","weight":"500","style":"normal"},{"path":"../public/assets/fonts/NEXT ART_Bold.woff2","weight":"700","style":"normal"}],"variable":"--next-art","display":"swap"}],"variableName":"nextArt"} ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+font-family: '__nextArt_ab68b4';
+src: url(/_next/static/media/ffc9da44f319af32-s.p.woff2) format('woff2');
+font-display: swap;
+font-weight: 300;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__nextArt_ab68b4';
+src: url(/_next/static/media/d1ee22c81d62720c-s.p.woff2) format('woff2');
+font-display: swap;
+font-weight: 400;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__nextArt_ab68b4';
+src: url(/_next/static/media/8552ffe8f90f5a1a-s.p.woff2) format('woff2');
+font-display: swap;
+font-weight: 500;
+font-style: normal;
+}
+
+@font-face {
+font-family: '__nextArt_ab68b4';
+src: url(/_next/static/media/1d62ef9d7d524946-s.p.woff2) format('woff2');
+font-display: swap;
+font-weight: 700;
+font-style: normal;
+}@font-face {font-family: '__nextArt_Fallback_ab68b4';src: local("Arial");ascent-override: 58.47%;descent-override: 19.49%;line-gap-override: 0.69%;size-adjust: 128.28%
+}.__className_ab68b4 {font-family: '__nextArt_ab68b4', '__nextArt_Fallback_ab68b4'
+}.__variable_ab68b4 {--next-art: '__nextArt_ab68b4', '__nextArt_Fallback_ab68b4'
 }
 
