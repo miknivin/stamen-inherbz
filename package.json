@@ -32,7 +32,7 @@
     "react-modal-video": "^2.0.1",
     "sass": "^1.66.1",
     "start-app-dir": "file:",
-    "sweetalert2": "^11.14.5",
+    "sweetalert2": "^11.15.10",
     "swiper": "^10.2.0",
     "wowjs": "^1.1.3"
   }

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { isValidForm } from '../../helpers/contactFormValidation'; 
-
+import Swal from 'sweetalert2';
 export default function ContactForm({ handleNext, handleContactFormData }) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -11,9 +11,18 @@ export default function ContactForm({ handleNext, handleContactFormData }) {
         e.preventDefault();
         
         if (!isValidForm(name, email, phone)) {
-            alert('Please fill in all fields correctly.');
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid Input',
+                text: 'Please fill in all fields correctly.',
+                confirmButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'swal-button-red' // Use the custom class
+                }
+            });
             return;
-        }
+        }        
+        
         
         const existingShippingInfo = localStorage.getItem('shippingInfo');
         
@@ -89,7 +98,7 @@ export default function ContactForm({ handleNext, handleContactFormData }) {
             </div>
             <button
                 type="submit"
-                className="theme-btn btn-one"
+                className="theme-btn btn-two"
             >
                 <span>Submit</span>
             </button>

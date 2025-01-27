@@ -1,14 +1,17 @@
+import Directions from '@/components/elements/Directions';
 import Link from 'next/link';
 import React from 'react';
 
 export default function chooseus() {
+
+
   return (
     <section className="chooseus-section">
-      <div className="bg-layer" style={{ backgroundImage: 'url(assets/images/background/chooseus-bg.webp)',backgroundSize:'contain'}}></div>
+      {/* <div className="bg-layer" style={{ backgroundImage: 'url(assets/images/background/chooseus-bg.webp)',backgroundSize:'contain'}}></div> */}
       <div className="pattern-layer" style={{ backgroundImage: 'url(assets/images/shape/shape-12.png)' }}></div>
       <div className="auto-container">
         <div className="row clearfix">
-          <div className="col-lg-8 col-md-12 col-sm-12 content-column">
+          <div className="col-lg-7 col-md-12 col-sm-12 content-column">
             <div className="content-box">
               <div className="sec-title light mb_50">
                 <span className="sub-title">Why Choose Stamen</span>
@@ -61,6 +64,9 @@ export default function chooseus() {
                 </div>
               </div>
             </div>
+          </div>
+          <div style={{position:"relative"}} className="col-lg-5 col-md-12 col-sm-12 content-column d-flex align-items-center justify-content-center">
+            <Directions/>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from "next/link";
 import { nextArt } from '@/lib/font';
+import BannerSlider from '@/components/slider/BannerSlider';
 
 export default function Banner() {
   return (
@@ -31,7 +32,9 @@ export default function Banner() {
           </div>
           <div className="col-lg-6 col-md-12 col-sm-12 image-column">
             <div className="image-box">
-              <figure className="image float-bob-y"><img src="assets/images/banner/banner-img-1.webp" alt="" /></figure>
+              <div className="image float-bob-y">
+                <BannerSlider/>
+              </div>
             </div>
           </div>
         </div>

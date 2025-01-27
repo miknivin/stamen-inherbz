@@ -2804,8 +2804,27 @@ button.ltr {
 
 
 
+@media (max-width: 767px) { /* Adjust for mobile screens */
+  .image_block_one .image-box .image img {
+      border-radius: 80px 0px 100px 80px;
+  }
+  .change-pos{
+    position:static !important;
+  }
+}
 
+.change-pos{
+  position:absolute;
+  right:0px;
+  top:2%;
+}
 
+.swal-button-red {
+  background-color: rgb(225, 30, 47) !important; 
+  color: white !important;
+  border: none !important; 
+  box-shadow: none !important; 
+}
 
 
 
