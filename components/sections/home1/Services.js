@@ -20,10 +20,10 @@ export default function service() {
                 <figure className="image"><div><img src="assets/images/service/service-3.webp" alt="" /></div></figure>
                 {/* <div className="icon-box d-flex align-items-center justify-content-center"><FontAwesomeIcon color='#df2232' icon={faCheck} width={50} /></div> */}
               </div>
-              {/* <div className="lower-content">
+              <div className="lower-content">
                 <h3><div>Endurance</div></h3>
                 <p>Natural botanical formula extends intimate moments up to 3 hours with controlled sensitivity</p>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
@@ -34,10 +34,10 @@ export default function service() {
                 <figure className="image"><div ><img src="assets/images/service/service-2.webp" alt="" /></div></figure>
                 {/* <div className="icon-box d-flex align-items-center justify-content-center"><FontAwesomeIcon color='#df2232' icon={faCheck} width={50} /></div> */}
               </div>
-              {/* <div className="lower-content">
+              <div className="lower-content">
                 <h3><div>Safety</div></h3>
                 <p>Side-effect free herbal blend ensures peace of mind while delivering consistent performance</p>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
@@ -48,10 +48,10 @@ export default function service() {
                 <figure className="image"><div><img src="assets/images/service/service-1.webp" alt="" /></div></figure>
                 {/* <div className="icon-box d-flex align-items-center justify-content-center"><FontAwesomeIcon color='#df2232' icon={faCheck} width={50} /></div> */}
               </div>
-              {/* <div className="lower-content">
+              <div className="lower-content">
                 <h3><div>Simplicity</div></h3>
                 <p>Quick-absorbing cream requires just one targeted application to work effectively within minutes</p>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>

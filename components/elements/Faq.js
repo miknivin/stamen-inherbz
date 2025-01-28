@@ -42,7 +42,7 @@ export default function Faq() {
                                             <div className="icon-box">
                                                 <i className="icon-34"></i>
                                             </div>
-                                            <h4>{faq.question}</h4>
+                                            <h4 style={{fontSize:"calc(0.8rem + 0.3vw)"}}>{faq.question}</h4>
                                         </div>
                                         <div
                                             className={isActive.key === faq.id ? "acc-content current" : "acc-content"}

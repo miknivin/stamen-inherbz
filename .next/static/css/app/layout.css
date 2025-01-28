@@ -30113,7 +30113,7 @@ a.ui-button:active,
   position: relative;
   display: block;
   overflow: hidden;
-  border-radius: 20px 20px 20px 20px;
+  border-radius: 20px 20px 0px 0px;
   border:none;
 }
 
@@ -35271,6 +35271,7 @@ button.ltr {
 }
 
 .service-block-one{
+  border-radius:20px;
   background:var(--card-bg);
 }
 
@@ -35292,12 +35293,16 @@ button.ltr {
   .change-pos{
     position:static !important;
   }
+
+  .acc-btn h4{
+    font-size: calc(0.8rem +0.3vw) !important;
+  }
 }
 
 .change-pos{
   position:absolute;
   right:0px;
-  top:2%;
+  top:5%;
 }
 
 .swal-button-red {
